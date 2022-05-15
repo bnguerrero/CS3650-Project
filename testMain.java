@@ -1,4 +1,9 @@
+import java.util.Scanner;
 public class testMain {
+    private static Task task;
+    private static String filename;
+    private static int duration;
+    
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Schedule testSchedule = new Schedule();
@@ -8,19 +13,45 @@ public class testMain {
         + "\n 9. View schedule for 1 month \n 10. Write schedule for 1 day \n 11. Write schedule for 1 week \n 12. Write schedule for 1 month");
         int option = scan.nextInt();
 
-        if (option ==1){
-            testSchedule.addTask();
+        switch(option)
+        {
+            case 1:{
+                testSchedule.addTask();
+            }
+            case 2:{
+                testSchedule.viewTask(task);
+            }
+            case 3:{
+                testSchedule.deleteTask(task);
+            }
+            case 4:{
+                testSchedule.editTask(task);
+            }
+            case 5:{
+                testSchedule.writeSchedule(filename);
+            }
+            case 6:{
+                testSchedule.readSchedule(filename);
+            }
+            case 7:{
+                testSchedule.viewScheduleDuration(filename, duration);
+            }
+            case 8:{
+                testSchedule.viewScheduleDuration(filename, duration);
+            }
+            case 9:{
+                testSchedule.viewScheduleDuration(filename, duration);
+            }
+            case 10:{
+                testSchedule.writeScheduleDuration(filename, duration);
+            }
+            case 11:{
+                testSchedule.writeScheduleDuration(filename, duration);
+            }
+            case 12:{
+                testSchedule.writeScheduleDuration(filename, duration);
+            }
         }
-        if (option ==2){
-            testSchedule.viewTask(task);
-        }
-        if (option ==3){
-            testSchedule.deleteTask(task);
-        }
-        if (option ==4){
-            testSchedule.editTask(task);
-        }
-        if (option ==4){
     
 
 
