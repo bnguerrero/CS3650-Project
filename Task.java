@@ -2,12 +2,18 @@
 public class Task {
 
     protected String name;
-    protected String type;
     protected int date;
-    protected double startTime;
-    protected double duration;
+    protected Runtime runtime;
     protected boolean hasAntiTask;
+    public enum type {TRANSIENT, RECURRING}
 
+    Task(String name, int date, Runtime runtime) {
+        this.name = name;
+        this.date = date;
+        this.runtime = runtime;
+        hasAntiTask = false;
+    }
+    
     public String getName() {
         return name;
     }
@@ -16,12 +22,8 @@ public class Task {
         this.name = name;
     }
 
-    public String getType() {
+    public type getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getDate() {
@@ -33,26 +35,26 @@ public class Task {
     }
 
     public double getStartTime() {
-        return startTime;
+        return runtime.start;
     }
 
     public void setStartTime(double startTime) {
-        this.startTime = startTime;
+        runtime.start = startTime;
     }
 
     public double getDuration() {
-        return duration;
+        return runtime.duration;
     }
 
     public void setDuration(double duration) {
-        this.duration = duration;
+        runtime.duration = duration;
     }
 
-    public boolean getAntiTask() {
-        return hasAntiTask;
+    public boolean hasAntiTask() {
+        return this.hasAntiTask;
     }
 
-    public void setHasAntiTask(boolean hasAntiTask) {
-        this.hasAntiTask = hasAntiTask;
+    public void setAntiTask(boolean AntiTask) {
+        hasAntiTask = AntiTask;
     }
 }
