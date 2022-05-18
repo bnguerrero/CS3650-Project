@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import Task.type;
+
 public class Schedule {
     private ArrayList<Task> taskList;
 
@@ -15,11 +17,26 @@ public class Schedule {
     }
 
     public void viewTask(Task task) {
+        System.out.println("Task: " + task.getName());
+        System.out.println("Type: " ); //not yet implemented
+        System.out.println("Start Time: ");
+        System.out.println("Duration: ");
+        System.out.println("Antitask: " + task.hasAntiTask());
+        // if (task.getType() == TRANSIENT){
 
+        // }
+    }
+
+    public void editTask(Task task) {
     }
 
     public void deleteTask(Task task) {
-
+        for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).getName() == task.getName()) {
+                taskList.remove(i);
+                break;
+            }
+        }
     }
 
     public boolean checkConflicts(Task task) {
