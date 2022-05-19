@@ -22,6 +22,10 @@ public class RecurringTask extends Task {
     
     private void instantiateTasks(){}
     
+    public ArrayList<TransientTask> getTasks{
+        return tasks;
+    }
+    
     public int getStartDate() {
         return date;
     }
