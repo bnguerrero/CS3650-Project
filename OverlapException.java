@@ -3,7 +3,7 @@ public class OverlapException extends Exception{
   private Task task1; //the first task
   private Task task2; //the overlapping task
   
-  public Exception(Task t1, Task t2)
+  public OverlapException(Task t1, Task t2)
   {
     task1 = t1;
     task2 = t2;
