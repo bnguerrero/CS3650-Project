@@ -1,31 +1,43 @@
+import java.util.ArrayList;
+
 public class RecurringTask extends Task {
-    private int startDate;
-    private int endDate;
+    //date is the same as start date
+    private int endDate; //the date gets split into 2, so when pointing to a recurring task, we are actually pointing to the first task in the list
     private int frequency;
-    public RecurringTask(String name, String type, int date, double startTime, double duration, boolean hasAntiTask, int startDate, int endDate, int frequency)
-    {
+    private ArrayList<TransientTask> tasks; //A recurring task is a collection of transient tasks
+    
+    public RecurringTask(String name, int date, Runtime runtime, int endDate, int frequency) throws IllegalArgumentException {
+        //check that the frequency is a 1 or a 7
+        if (frequency != 1 && frequency != 7)
+            throw IIllegalArgumentException("Frequency must be a 1 or a 7"); //this may be better handled in main, but for purposes of this project we don't really have time to discuss that.
+        
         this.name = name;
-        this.type = type;
+        this.type = type.RECURRING;
         this.date = date;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.hasAntiTask = hasAntiTask;
-        this.startDate = startDate;
+        this.runtime = runtime;
         this.endDate = endDate;
         this.frequency = frequency;
+        instantiateTasks();
     }
+    
+    private void instantiateTasks(){}
+    
     public int getStartDate() {
-        return startDate;
+        return date;
     }
 
+    //I don't know that we want to be able to change the end date within this class, it might be better to just make a new recurring task entirely
+        //changing the end date would mean adding to or removing from the beginning of the list of classes
     public void setStartDate(int startDate) {
-        this.startDate = startDate;
+        this.startDate = date;
     }
 
     public int getEndDate() {
         return endDate;
     }
 
+    //I don't know that we want to be able to change the end date within this class, it might be better to just make a new recurring task entirely
+        //changing the end date would mean adding to or removing from the end of the list of classes
     public void setEndDate(int endDate) {
         this.endDate = endDate;
     }
@@ -34,6 +46,8 @@ public class RecurringTask extends Task {
         return frequency;
     }
 
+    //I don't know that we want to be able to change the frequency within this class, it might be better to just make a new recurring task entirely
+        //changing the frequency would mean changing the set of classes within the task
     public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
