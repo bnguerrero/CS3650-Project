@@ -33,12 +33,12 @@ public class Task {
         this.date = date;
     }
 
-    public double getStartTime() {
-        return runtime.startTime;
-    }
-
     public Enum getType() {
         return typeVal;
+    }
+
+    public double getStartTime() {
+        return runtime.startTime;
     }
 
     public void setStartTime(double startTime) {

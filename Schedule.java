@@ -17,13 +17,18 @@ public class Schedule {
 
     public void viewTask(Task task) {
         System.out.println("Task: " + task.getName());
-        System.out.println("Type: " ); //not yet implemented
-        System.out.println("Start Time: ");
-        System.out.println("Duration: ");
+        System.out.println("Date: " + task.getDate());
+        System.out.println("Start Time: " + task.getStartTime());
+        System.out.println("Duration: " + task.getDuration());
         System.out.println("Antitask: " + task.hasAntiTask());
-        // if (task.getType() == TRANSIENT){
-
-        // }
+        if (task.getType() == type.TRANSIENT){
+            System.out.println("Type: Transient");
+        }
+        if (task.getType() == type.RECURRING){
+            System.out.println("Type: Recurring");
+            System.out.println("End Date: " + ((RecurringTask)task).getEndDate());
+            System.out.println("Frequency: " + ((RecurringTask)task).getFrequency());
+        }
     }
 
     public void editTask(Task task) {
