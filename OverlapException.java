@@ -9,6 +9,6 @@ public class OverlapException extends Exception{
     task2 = t2;
   }
   
-  public Task getTask1 {return task1}
-  public Task getTask2 {return task2}
+  public Task getTask1() {return task1;}
+  public Task getTask2() {return task2;}
 }
