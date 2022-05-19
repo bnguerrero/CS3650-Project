@@ -14,7 +14,7 @@ public class RecurringTask extends Task {
             throw IIllegalArgumentException("Frequency must be a 1 or a 7"); //this may be better handled in main, but for purposes of this project we don't really have time to discuss that.
         this.frequency = frequency;
         
-        this.type = type.RECURRING;
+        typeVal = type.RECURRING;
         this.endDate = endDate;
         
         instantiateTasks();

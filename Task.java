@@ -1,3 +1,6 @@
+enum type {
+    TRANSIENT, RECURRING
+}
 
 public class Task {
 
@@ -5,7 +8,7 @@ public class Task {
     protected int date;
     protected Runtime runtime;
     protected boolean hasAntiTask;
-    public enum type {TRANSIENT, RECURRING}
+    protected type typeVal;
 
     Task(String name, int date, Runtime runtime) {
         this.name = name;
@@ -13,17 +16,13 @@ public class Task {
         this.runtime = runtime;
         hasAntiTask = false;
     }
-    
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public type getType() {
-        return type;
     }
 
     public int getDate() {
@@ -35,11 +34,15 @@ public class Task {
     }
 
     public double getStartTime() {
-        return runtime.start;
+        return runtime.startTime;
+    }
+
+    public Enum getType() {
+        return typeVal;
     }
 
     public void setStartTime(double startTime) {
-        runtime.start = startTime;
+        runtime.startTime = startTime;
     }
 
     public double getDuration() {

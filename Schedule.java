@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import Task.type;
 
 public class Schedule {
     private ArrayList<Task> taskList;
