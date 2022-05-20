@@ -41,27 +41,7 @@ public class Schedule {
     }
 
     public void viewTask(Task task) throws javax.naming.directory.InvalidAttributeValueException {
-        System.out.println("Task: " + task.getName());
-        System.out.println("Date: " + task.getDate());
-        System.out.println("Start Time: " + task.getStartTime());
-        System.out.println("Duration: " + task.getDuration());
-        System.out.println("Antitask: " + task.hasAntiTask());
-        if (task.getType() == Type.TRANSIENT){
-            System.out.println("Type: Transient");
-        }
-        if (task.getType() == Type.RECURRING){
-            System.out.println("Type: Recurring");
-            System.out.println("End Date: " + task.getEndDate());
-            System.out.println("Frequency: " + task.getFrequency());
-            System.out.println();
-            for (int i = 0; i < task.getTasks().size(); i++){
-                System.out.println("Recurrence " + (i+1));
-                System.out.println("Date: " + task.getDate());
-                System.out.println("Start Time: " + task.getStartTime());
-                System.out.println("Duration: " + task.getDuration());
-                // System.out.println("Antitask: " + task.hasAntiTask());
-            }
-        }
+       task.show();
     }
 
     public void editTask(Task task, String newName, int newDate, Runtime newRuntime, boolean antiTaskVal,

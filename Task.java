@@ -155,4 +155,27 @@ public class Task {
         return runtime;
     }
 
+    public void show() throws javax.naming.directory.InvalidAttributeValueException {
+        System.out.println("Task: " + getName());
+        System.out.println("Date: " + getDate());
+        System.out.println("Start Time: " + getStartTime());
+        System.out.println("Duration: " + getDuration());
+        System.out.println("Antitask: " + hasAntiTask());
+        if (getType() == Type.TRANSIENT){
+            System.out.println("Type: Transient");
+        }
+        if (getType() == Type.RECURRING){
+            System.out.println("Type: Recurring");
+            System.out.println("End Date: " + getEndDate());
+            System.out.println("Frequency: " + getFrequency());
+            System.out.println();
+            for (int i = 0; i < getTasks().size(); i++){
+                System.out.println("Recurrence " + (i+1));
+                System.out.println("Date: " + getDate());
+                System.out.println("Start Time: " + getStartTime());
+                System.out.println("Duration: " + getDuration());
+                // System.out.println("Antitask: " + task.hasAntiTask());
+            }
+        }
+    }
 }

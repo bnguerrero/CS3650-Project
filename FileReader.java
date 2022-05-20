@@ -48,7 +48,20 @@ public class FileReader {
             throw new Exception("Invalid format");
         }
         for(Task task : newTasks){
-            schedule.add(task);
+            try{
+                if (schedule.checkConflicts(task))
+                    schedule.addTask(task);
+                else{
+                    System.out.println("Task not added because of conflict");
+                    task.show();
+                }
+            }
+            catch(IllegalArgumentException iae)
+            {
+                System.out.println(iae.getMessage());
+                task.show();
+            }
+
         }
     }
 }
