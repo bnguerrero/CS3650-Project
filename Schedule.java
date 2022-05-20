@@ -170,7 +170,8 @@ public class Schedule {
     }
 
     // public void writeSchedule(String filename) {
-
+    // FileWriter writer = new FileWriter();
+    // writer.write(taskList);
     // }
 
     // public void readSchedule(String filename) {
