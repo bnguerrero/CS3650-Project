@@ -53,21 +53,21 @@ public class Schedule {
         //if there is an overlap at any point, this will return false.
         //imperceptible bug: this will check each task in the recurring task's name as well. Small optimization issue
         if (newTask.getType() == type.RECURRING){
-            for (t : newTask.getTasks()){
+            for (Task t : newTask.getTasks()){
                 if (!checkConflicts(t))
                     return false;
             }
         }
         
         //check the conflicts between the newly added task and every other task in the list.
-        for(task : taskList) {
+        for(Task task : taskList) {
             //first check name conflicts
-            if (newTask.getName == task.getName())
+            if (newTask.getName() == task.getName())
                 return false;
             
             //then check timing conflicts
             if (task.getType() == type.RECURRING) //if it is a recurring task, look through the set{
-                for (t : task.getTasks()){
+                for (Task t : task.getTasks()){
                     if(!task.hasAntiTask()) //skip this if the task has an anti task.
                         if (t.getDate() == newTask.getDate()) //if the dates are the same, check their runtimes
                             if(!task.hasAntiTask()) //skip this if the task has an anti task.
