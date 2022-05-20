@@ -1,4 +1,8 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import javax.naming.directory.InvalidAttributeValueException;
 
 enum type {
     TRANSIENT, RECURRING
@@ -76,7 +80,34 @@ public class Task {
 
     }
 
-    public ArrayList<TransientTask> getTasks() {
+    public ArrayList<TransientTask> getTasks() throws InvalidAttributeValueException {
+        String s = Integer.toString(this.date);
+        String e = Integer.toString(this.endDate);
+
+        int startYear = Integer.parseInt(s.substring(0, 4));
+        int startMonth = Integer.parseInt(s.substring(4, 6));
+        int startDay = Integer.parseInt(s.substring(6, 8));
+
+        int endYear = Integer.parseInt(e.substring(0, 4));
+        int endMonth = Integer.parseInt(e.substring(4, 6));
+        int endDay = Integer.parseInt(e.substring(6, 8));
+
+        LocalDate start = LocalDate.of(startYear, startMonth, startDay);
+        LocalDate end = LocalDate.of(endYear, endMonth, endDay);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        if(this.frequency == 1) {
+            while(start.isBefore(end) || start.isEqual(end)) {
+                int newDate = start.plusDays(1);
+                Task t = new Task(this.name, , runtime)
+            }
+        }
+        else if(this.frequency == 7) {
+
+        }
+        else {
+            throw new InvalidAttributeValueException();
+        }
         return tasks;
     }
 
