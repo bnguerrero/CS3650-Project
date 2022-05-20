@@ -6,19 +6,21 @@ public class PSS {
         Schedule taskSchedule = new Schedule();
 
         while (true) {
-            
+            System.out.println();
             System.out.println(
                     "Please select an option below: \n 1. Create a task \n 2. View a task \n 3. Delete a task \n 4. Edit a task"
                             + "\n 5. Write the schedule to a file \n 6. Read the Schedule to a file \n 7. View schedule for 1 day \n 8. View schedule for 1 week"
                             + "\n 9. View schedule for 1 month \n 10. Write schedule for 1 day \n 11. Write schedule for 1 week \n 12. Write schedule for 1 month \n 0. Exit");
             int option = input.nextInt();
-            
+
             switch (option) {
                 case 1: {
+                    // for testing
                     Runtime testRuntime = new Runtime();
                     testRuntime.startTime = 20;
                     testRuntime.duration = 60;
                     RecurringTask testTask1 = new RecurringTask("testTask1", 1, testRuntime, 100, 7);
+                    testTask1.instantiateTasks();
                     TransientTask testTask2 = new TransientTask("testTask2", 40, testRuntime);
                     taskSchedule.addTask(testTask1);
                     taskSchedule.addTask(testTask2);
@@ -29,11 +31,19 @@ public class PSS {
                     input.nextLine();
                     String taskName = input.nextLine();
                     int loc = taskSchedule.findTask(taskName);
+                    if (loc == -1)
+                        System.out.println("Error: task not found");
                     taskSchedule.viewTask(taskSchedule.getTask(loc));
                     break;
                 }
                 case 3: {
-                    // taskSchedule.deleteTask(task);
+                    System.out.println("Enter task to delete:");
+                    input.nextLine();
+                    String taskName = input.nextLine();
+                    int loc = taskSchedule.findTask(taskName);
+                    if (loc == -1)
+                        System.out.println("Error: task not found");
+                    taskSchedule.deleteTask(taskSchedule.getTask(loc));
                     break;
                 }
                 case 4: {
@@ -80,7 +90,6 @@ public class PSS {
                     break;
             }
 
-            
         }
 
     }
