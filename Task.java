@@ -78,8 +78,8 @@ public class Task {
         return this.hasAntiTask;
     }
 
-    public void setAntiTask(boolean AntiTask) {
-        hasAntiTask = AntiTask;
+    public void setAntiTask(boolean antiTask) {
+        hasAntiTask = antiTask;
     }
 
 
