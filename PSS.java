@@ -30,8 +30,10 @@ public class PSS {
                     input.nextLine();
                     String taskName = input.nextLine();
                     int loc = taskSchedule.findTask(taskName);
-                    if (loc == -1)
+                    if (loc == -1) {
                         System.out.println("Error: task not found");
+                        break;
+                    }
                     taskSchedule.viewTask(taskSchedule.getTask(loc));
                     break;
                 }
@@ -40,14 +42,73 @@ public class PSS {
                     input.nextLine();
                     String taskName = input.nextLine();
                     int loc = taskSchedule.findTask(taskName);
-                    if (loc == -1)
+                    if (loc == -1) {
                         System.out.println("Error: task not found");
+                        break;
+                    }
                     taskSchedule.deleteTask(taskSchedule.getTask(loc));
                     break;
                 }
                 case 4: {
-                    // taskSchedule.editTask(task);
-                    break;
+                    System.out.println("Enter task to edit:");
+                    input.nextLine();
+                    String taskName = input.nextLine();
+                    int loc = taskSchedule.findTask(taskName);
+                    if (loc == -1) {
+                        System.out.println("Error: task not found");
+                        break;
+                    }
+                    while (true) {
+                        String newName = taskSchedule.getTask(loc).getName();
+                        int newDate = taskSchedule.getTask(loc).getDate();
+                        double newStartTime = taskSchedule.getTask(loc).getStartTime();
+                        double newDuration = taskSchedule.getTask(loc).getDuration();
+                        boolean antiTaskStatus = taskSchedule.getTask(loc).hasAntiTask();
+                        int newEndDate = taskSchedule.getTask(loc).getEndDate();
+                        System.out.println(
+                                "Edit values: 1) Name 2) Date 3) Start time \n 4) Duration 5) Antitask Status 6) End date \n 7) Complete Edit");
+                        int key = input.nextInt();
+                        switch (key) {
+                            case 1:
+                                System.out.println("New Name:");
+                                newName = input.nextLine();
+                                break;
+                            case 2:
+                                System.out.println("New Start Date:");
+                                newDate = input.nextInt();
+                                break;
+                            case 3:
+                                System.out.println("New Start Time:");
+                                newStartTime = input.nextInt();
+                                break;
+                            case 4:
+                                System.out.println("New Duration: ");
+                                newDuration = input.nextInt();
+                                break;
+                            case 5:
+                                System.out.println("Toggle antitask status (1 = True, 2 = False):");
+                                int antiTaskVal = input.nextInt();
+                                antiTaskStatus = false;
+                                if (antiTaskVal == 1)
+                                    antiTaskStatus = true;
+                                if (antiTaskVal == 2)
+                                    antiTaskStatus = false;
+                                taskSchedule.getTask(loc).setAntiTask(antiTaskStatus);
+                                break;
+                            case 6:
+                                System.out.println("New End Date: ");
+                                newEndDate = input.nextInt();
+                                break;
+                            case 7:
+                                Runtime newRuntime = new Runtime();
+                                newRuntime.startTime = newStartTime;
+                                newRuntime.duration = newDuration;
+                                taskSchedule.editTask(taskSchedule.getTask(loc), newName, newDate, newRuntime, antiTaskStatus, newEndDate);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                 }
                 case 5: {
                     // taskSchedule.writeSchedule(filename);
