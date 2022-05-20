@@ -24,7 +24,8 @@ public class Task {
         this.runtime = runtime;
         hasAntiTask = false;
     }
-
+    
+    //name stuff
     public String getName() {
         return name;
     }
@@ -32,7 +33,8 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    //date stuff
     public int getDate() {
         return date;
     }
@@ -40,11 +42,13 @@ public class Task {
     public void setDate(int date) {
         this.date = date;
     }
-
+    
+    //type stuff
     public type getType() {
         return typeVal;
     }
 
+    //runtime stuff
     public double getStartTime() {
         return runtime.startTime;
     }
@@ -60,7 +64,16 @@ public class Task {
     public void setDuration(double duration) {
         runtime.duration = duration;
     }
-
+    
+    public Runtime getRuntime(Runtime runtime){
+        return runtime;
+    }
+    
+    public Runtime setRuntime(Runtime runtime){
+        this.runtime = runtime;
+    }
+    
+    //anti task stuff
     public boolean hasAntiTask() {
         return this.hasAntiTask;
     }
@@ -71,10 +84,6 @@ public class Task {
 
 
     //methods for RecurringTask:
-
-    public void instantiateTasks() {
-
-    }
 
     public ArrayList<TransientTask> getTasks() {
         return tasks;
