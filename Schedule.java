@@ -83,7 +83,7 @@ public class Schedule {
             //in case the type superclass is thrown into here, since its basically the same as a transient class it actually would work
             //but since there may be future subclasses without implementation, this was safer.
             else 
-                throw IllegalArgumentException("Invalid task type for conflict checking.");
+                throw new IllegalArgumentException("Invalid task type for conflict checking.");
          }
         return true;
     }
