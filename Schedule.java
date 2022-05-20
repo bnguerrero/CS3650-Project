@@ -207,10 +207,10 @@ public class Schedule {
     // FileReader reader = new FileReader(this);
     // reader.read(filename);
     // }
-
+    
     // public void writeScheduleDuration(String filename, int startDate, int endDate) {
-    // JsonWriter writer = new FileWriter();
-    // writer.write(taskList, filename, startDate, endDate);
+    // JsonWriter writer = new FileWriter(startDate, endDate);
+    // writer.write(taskList, filename);
     // }
 }
 
