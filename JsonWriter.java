@@ -2,7 +2,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.*;
 import java.util.*;
-public class FileWriter{
+public class JsonWriter{
 
     public JsonWriter(){
     }
