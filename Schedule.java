@@ -74,6 +74,7 @@ public class Schedule {
         }
     }
 
+    //true if no conflicts
     public boolean checkConflicts(Task newTask) throws IllegalArgumentException, InvalidAttributeValueException, javax.naming.directory.InvalidAttributeValueException {
         //if the type is recurring, recursively check.
         //call checkConflicts on each transient task contained in the recurring task.
@@ -87,6 +88,7 @@ public class Schedule {
         }
 
         //check conflicts of newTask against each task in taskList
+        
         for (Task task : taskList) {
             //if newTask does not have a unique name, return false 
             if(task.getName().equals(newTask.getName())) {
