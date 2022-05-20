@@ -20,7 +20,6 @@ public class PSS {
                     testRuntime.startTime = 20;
                     testRuntime.duration = 60;
                     RecurringTask testTask1 = new RecurringTask("testTask1", 1, testRuntime, 100, 7);
-                    testTask1.instantiateTasks();
                     TransientTask testTask2 = new TransientTask("testTask2", 40, testRuntime);
                     taskSchedule.addTask(testTask1);
                     taskSchedule.addTask(testTask2);
