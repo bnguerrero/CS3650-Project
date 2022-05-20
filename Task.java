@@ -41,7 +41,7 @@ public class Task {
         this.date = date;
     }
 
-    public Enum getType() {
+    public type getType() {
         return typeVal;
     }
 
