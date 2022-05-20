@@ -16,7 +16,7 @@ public class Task {
     protected boolean hasAntiTask;
     protected Type typeVal;
 
-    //values for RecurringTask
+    // values for RecurringTask
     protected int endDate; // the date gets split into 2, so when pointing to a recurring task, we are
     // actually pointing to the first task in the list
     protected int frequency;
@@ -73,58 +73,14 @@ public class Task {
         hasAntiTask = AntiTask;
     }
 
-
-    //methods for RecurringTask:
+    // methods for RecurringTask:
 
     private void instantiateTasks() {
 
     }
 
-    //creates a list of transient tasks for a recurring task 
-    public ArrayList<TransientTask> getTasks() throws InvalidAttributeValueException {
-        String s = Integer.toString(date);
-        String e = Integer.toString(endDate);
-
-        int startYear = Integer.parseInt(s.substring(0, 4));
-        int startMonth = Integer.parseInt(s.substring(4, 6));
-        int startDay = Integer.parseInt(s.substring(6, 8));
-
-        int endYear = Integer.parseInt(e.substring(0, 4));
-        int endMonth = Integer.parseInt(e.substring(4, 6));
-        int endDay = Integer.parseInt(e.substring(6, 8));
-
-        //create LocalDate object for start and end date 
-        LocalDate start = LocalDate.of(startYear, startMonth, startDay);
-        LocalDate end = LocalDate.of(endYear, endMonth, endDay);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
-        /**
-         * if frequency is 1, increment start by one day until start > end, create a transient task
-         * with the new date and same runtime, add this new task to the list of tasks
-        */
-        if(frequency == 1) {
-            while(start.isBefore(end) || start.isEqual(end)) {
-                start = start.plusDays(1);
-                String newDate = start.format(formatter);
-                TransientTask t = new TransientTask(name, Integer.parseInt(newDate), runtime);
-                tasks.add(t);
-            }
-        }
-          /**
-         * if frequency is 7, increment start by one week until start > end, create a transient task
-         * with the new date and same runtime, add this new task to the list of tasks
-        */
-        else if(frequency == 7) {
-            while(start.isBefore(end) || start.isEqual(end)) {
-                start = start.plusWeeks(1);
-                String newDate = start.format(formatter);
-                TransientTask t = new TransientTask(name, Integer.parseInt(newDate), runtime);
-                tasks.add(t);
-            }
-        }
-        else {
-            throw new InvalidAttributeValueException();
-        }
+    // creates a list of transient tasks for a recurring task
+    public ArrayList<TransientTask> getTasks() {
         return tasks;
     }
 
@@ -161,19 +117,20 @@ public class Task {
         System.out.println("Start Time: " + getStartTime());
         System.out.println("Duration: " + getDuration());
         System.out.println("Antitask: " + hasAntiTask());
-        if (getType() == Type.TRANSIENT){
+        if (getType() == Type.TRANSIENT) {
             System.out.println("Type: Transient");
         }
-        if (getType() == Type.RECURRING){
+        if (getType() == Type.RECURRING) {
             System.out.println("Type: Recurring");
             System.out.println("End Date: " + getEndDate());
             System.out.println("Frequency: " + getFrequency());
             System.out.println();
-            for (int i = 0; i < getTasks().size(); i++){
-                System.out.println("Recurrence " + (i+1));
-                System.out.println("Date: " + getDate());
-                System.out.println("Start Time: " + getStartTime());
-                System.out.println("Duration: " + getDuration());
+            for (int i = 0; i < getTasks().size(); i++) {
+                System.out.println("Recurrence " + (i + 1));
+                System.out.println("Date: " + getTasks().get(i).getDate());
+                System.out.println("Start Time: " + getTasks().get(i).getStartTime());
+                System.out.println("Duration: " + getTasks().get(i).getDuration());
+                System.out.println();
                 // System.out.println("Antitask: " + task.hasAntiTask());
             }
         }
