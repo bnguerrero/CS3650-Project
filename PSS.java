@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+import javax.naming.directory.InvalidAttributeValueException;
+
 public class PSS {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidAttributeValueException, javax.management.InvalidAttributeValueException, IllegalArgumentException {
         Scanner input = new Scanner(System.in);
         Schedule taskSchedule = new Schedule();
 

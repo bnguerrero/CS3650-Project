@@ -24,20 +24,20 @@ public class FileReader {
                     while(!(next1.equals("},"))){
                         next1 = in.next();
                         next2 = in.next();
-                        if(next2.subString(next2.length()-1).equals(",")){
+                        if(next2.substring(next2.length()-1).equals(",")){
                             next2 = next2.substring(1, next2.length()-2);
                         }
-                        else if(next2.subString(next2.length()-1).equals("\"")){
+                        else if(next2.substring(next2.length()-1).equals("\"")){
                             next2 = next2.substring(1, next2.length()-1);
                         }
                         else{
-                            throw new Exception("Invalid format");
+                            throw new ReadException();
                         }
                         taskData.add(next2);
                     }
                 }
                 else{
-                    throw new Exception("Invalid format");
+                    throw new ReadException();
                 }
                 newTasks.add(new Task(taskData.get(0), taskData.get(1), taskData.get(2)));
                 in.next();
@@ -45,23 +45,10 @@ public class FileReader {
             }
         }
         catch (Exception e){
-            throw new Exception("Invalid format");
+            throw new ReadException();
         }
         for(Task task : newTasks){
-            try{
-                if (schedule.checkConflicts(task))
-                    schedule.addTask(task);
-                else{
-                    System.out.println("Task not added because of conflict");
-                    task.show();
-                }
-            }
-            catch(IllegalArgumentException iae)
-            {
-                System.out.println(iae.getMessage());
-                task.show();
-            }
-
+            schedule.addTask(task);
         }
     }
 }
