@@ -45,6 +45,7 @@ public class Task {
         return typeVal;
     }
 
+    //runtime stuff
     public double getStartTime() {
         return runtime.startTime;
     }
@@ -59,6 +60,14 @@ public class Task {
 
     public void setDuration(double duration) {
         runtime.duration = duration;
+    }
+    
+    public Runtime getRuntime(Runtime runtime){
+        return runtime;
+    }
+    
+    public Runtime setRuntime(Runtime runtime){
+        this.runtime = runtime;
     }
 
     public boolean hasAntiTask() {
