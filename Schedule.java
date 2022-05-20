@@ -41,40 +41,20 @@ public class Schedule {
     }
 
     public void viewTask(Task task) throws javax.naming.directory.InvalidAttributeValueException {
-        System.out.println("Task: " + task.getName());
-        System.out.println("Date: " + task.getDate());
-        System.out.println("Start Time: " + task.getStartTime());
-        System.out.println("Duration: " + task.getDuration());
-        System.out.println("Antitask: " + task.hasAntiTask());
-        if (task.getType() == type.TRANSIENT){
-            System.out.println("Type: Transient");
-        }
-        if (task.getType() == type.RECURRING){
-            System.out.println("Type: Recurring");
-            System.out.println("End Date: " + task.getEndDate());
-            System.out.println("Frequency: " + task.getFrequency());
-            System.out.println();
-            for (int i = 0; i < task.getTasks().size(); i++){
-                System.out.println("Recurrence " + (i+1));
-                System.out.println("Date: " + task.getDate());
-                System.out.println("Start Time: " + task.getStartTime());
-                System.out.println("Duration: " + task.getDuration());
-                // System.out.println("Antitask: " + task.hasAntiTask());
-            }
-        }
+       task.show();
     }
 
     public void editTask(Task task, String newName, int newDate, Runtime newRuntime, boolean antiTaskVal,
             int newEndDate) {
-        type taskType = task.getType();
+        Type taskType = task.getType();
         int taskFreq = task.getFrequency();
         deleteTask(task);
-        if (taskType == type.TRANSIENT) {
+        if (taskType == Type.TRANSIENT) {
             TransientTask modifiedTask = new TransientTask(newName, newDate, newRuntime);
             modifiedTask.setAntiTask(antiTaskVal);
             addTask(modifiedTask);
         }
-        if (taskType == type.RECURRING) {
+        if (taskType == Type.RECURRING) {
             RecurringTask modifiedTask = new RecurringTask(newName, newDate, newRuntime, newEndDate, taskFreq);
             // for (int i = 0; i < task.getTasks().size(); i++){
             //     task.getTasks().get(i).setDate(newDate);
@@ -99,7 +79,7 @@ public class Schedule {
         //call checkConflicts on each transient task contained in the recurring task.
         //if there is an overlap at any point, this will return false.
         //imperceptible bug: this will check each task in the recurring task's name as well. Small optimization issue
-        if (newTask.getType() == type.RECURRING){
+        if (newTask.getType() == Type.RECURRING){
             for (Task t : newTask.getTasks()) {
                 if (!checkConflicts(t))
                     return false;
@@ -113,7 +93,7 @@ public class Schedule {
                 return false; 
             }
             //if a task in taskList is recurring, check that tasks list of recurring tasks
-            if(task.getType().equals(type.RECURRING)) {
+            if(task.getType().equals(Type.RECURRING)) {
                 //if task is not an anti-task, check if it conflicts with newTask
                 if(!task.hasAntiTask()) {
                     if(!conflictHelper(newTask.getDate(), task.getDate(), newTask.getRuntime(), task.getRuntime())) {
@@ -131,7 +111,7 @@ public class Schedule {
 
             }
             //if a task in taskList is transient, check for conflicts 
-            else if(task.getType().equals(type.TRANSIENT)) {
+            else if(task.getType().equals(Type.TRANSIENT)) {
                 if(!task.hasAntiTask()) {
                     if(!conflictHelper(newTask.getDate(), task.getDate(), newTask.getRuntime(), task.getRuntime())) {
                         return false;

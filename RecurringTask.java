@@ -14,7 +14,7 @@ public class RecurringTask extends Task {
                                                                              // for purposes of this project we don't
                                                                              // really have time to discuss that.
         this.frequency = frequency;
-        typeVal = type.RECURRING;
+        typeVal = Type.RECURRING;
         this.endDate = endDate;
 
         instantiateTasks();
