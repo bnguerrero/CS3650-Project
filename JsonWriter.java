@@ -4,10 +4,17 @@ import java.io.*;
 import java.util.*;
 public class JsonWriter{
 
+    private int startDate = -1;
+    private int endDate = -1;
+    public JsonWriter(int startDate, int endDate){
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public JsonWriter(){
     }
 
-    public void write(ArrayList<Task> taskList ,String filename){
+    public void write(ArrayList<Task> taskList, String filename){
         JSONOBject json = makeJson(taskList);
         try (PrintWriter out = new PrintWriter(new FileWriter(filename))) {
             out.write(json.toString());
@@ -16,14 +23,20 @@ public class JsonWriter{
         }
     }
 
+
     private JSONObject makeJson(ArrayList<Task> taskList){
         JSONObject json = new JSONObject();
         String taskName = "";
         String type = "";
+        int date = 0;
         for(Task task : taskList){
+            date = task.getDate();
+            if((date<startDate || date>endDate) && !(startDate == -1 || endDate == -1)){
+                continue;
+            }
             JSONObject taskJson = new JSONObject();
             taskName = task.getName();
-            taskJson.put("Date", Integer.toString(task.getDate()));
+            taskJson.put("Date", Integer.toString(date));
             type = task.getType().toString();
             taskJson.put("Type", type);
             taskJson.put("Start Time", task.getStartTime() + "");
