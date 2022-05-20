@@ -13,7 +13,7 @@ public class RecurringTask extends Task {
 
         // check that the frequency is a 1 or a 7
         if (frequency != 1 && frequency != 7)
-            throw IIllegalArgumentException("Frequency must be a 1 or a 7"); // this may be better handled in main, but
+            throw new IllegalArgumentException("Frequency must be a 1 or a 7"); // this may be better handled in main, but
                                                                              // for purposes of this project we don't
                                                                              // really have time to discuss that.
         this.frequency = frequency;
@@ -29,18 +29,6 @@ public class RecurringTask extends Task {
 
     public ArrayList<TransientTask> getTasks() {
         return tasks;
-    }
-
-    public int getStartDate() {
-        return date;
-    }
-
-    // I don't know that we want to be able to change the end date within this
-    // class, it might be better to just make a new recurring task entirely
-    // changing the end date would mean adding to or removing from the beginning of
-    // the list of classes
-    public void setStartDate(int startDate) {
-        this.startDate = date;
     }
 
     public int getEndDate() {
