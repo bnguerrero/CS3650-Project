@@ -31,7 +31,7 @@ public class testMain {
                 testSchedule.writeSchedule(filename);
             }
             case 6:{
-                testSchedule.viewSchedule(filename);
+                testSchedule.readSchedule(filename);
             }
             case 7:{
                 testSchedule.viewScheduleDuration(filename, duration);

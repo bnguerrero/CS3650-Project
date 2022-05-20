@@ -1,41 +1,23 @@
+
 public class RecurringTask extends Task {
-    private int startDate;
-    private int endDate;
-    private int frequency;
-    public RecurringTask(String name, String type, int date, double startTime, double duration, boolean hasAntiTask, int startDate, int endDate, int frequency)
-    {
-        this.name = name;
-        this.type = type;
-        this.date = date;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.hasAntiTask = hasAntiTask;
-        this.startDate = startDate;
-        this.endDate = endDate;
+
+
+    public RecurringTask(String name, int date, Runtime runtime, int endDate, int frequency)
+            throws IllegalArgumentException {
+                
+        super(name, date, runtime);
+
+        // check that the frequency is a 1 or a 7
+        if (frequency != 1 && frequency != 7)
+            throw new IllegalArgumentException("Frequency must be a 1 or a 7"); // this may be better handled in main, but
+                                                                             // for purposes of this project we don't
+                                                                             // really have time to discuss that.
         this.frequency = frequency;
-    }
-    public int getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(int startDate) {
-        this.startDate = startDate;
-    }
-
-    public int getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(int endDate) {
+        typeVal = type.RECURRING;
         this.endDate = endDate;
+
+        instantiateTasks();
     }
 
-    public int getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
-    }
 
 }
