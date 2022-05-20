@@ -65,11 +65,11 @@ public class Task {
         runtime.duration = duration;
     }
     
-    public Runtime getRuntime(Runtime runtime){
+    public Runtime getRuntime(){
         return runtime;
     }
     
-    public Runtime setRuntime(Runtime runtime){
+    public void setRuntime(Runtime runtime){
         this.runtime = runtime;
     }
     
