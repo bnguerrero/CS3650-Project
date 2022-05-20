@@ -199,8 +199,8 @@ public class Schedule {
     }
 
     // public void writeSchedule(String filename) {
-    // FileWriter writer = new FileWriter();
-    // writer.write(taskList);
+    // JsonWriter writer = new FileWriter();
+    // writer.write(taskList, filename);
     // }
 
     // public void readSchedule(String filename) {
@@ -208,9 +208,10 @@ public class Schedule {
     // reader.read(filename);
     // }
 
-    // public void writeScheduleDuration(String filename, int duration) {
-
-
+    // public void writeScheduleDuration(String filename, int startDate, int endDate) {
+    // JsonWriter writer = new FileWriter();
+    // writer.write(taskList, filename, startDate, endDate);
+    // }
 }
 
 // //check the conflicts between the newly added task and every other task in the list.
