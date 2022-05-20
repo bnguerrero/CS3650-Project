@@ -80,9 +80,10 @@ public class Task {
 
     }
 
+    //creates a list of transient tasks for a recurring task 
     public ArrayList<TransientTask> getTasks() throws InvalidAttributeValueException {
-        String s = Integer.toString(this.date);
-        String e = Integer.toString(this.endDate);
+        String s = Integer.toString(date);
+        String e = Integer.toString(endDate);
 
         int startYear = Integer.parseInt(s.substring(0, 4));
         int startMonth = Integer.parseInt(s.substring(4, 6));
@@ -92,18 +93,34 @@ public class Task {
         int endMonth = Integer.parseInt(e.substring(4, 6));
         int endDay = Integer.parseInt(e.substring(6, 8));
 
+        //create LocalDate object for start and end date 
         LocalDate start = LocalDate.of(startYear, startMonth, startDay);
         LocalDate end = LocalDate.of(endYear, endMonth, endDay);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
-        if(this.frequency == 1) {
+        /**
+         * if frequency is 1, increment start by one day until start > end, create a transient task
+         * with the new date and same runtime, add this new task to the list of tasks
+        */
+        if(frequency == 1) {
             while(start.isBefore(end) || start.isEqual(end)) {
-                int newDate = start.plusDays(1);
-                Task t = new Task(this.name, , runtime)
+                start = start.plusDays(1);
+                String newDate = start.format(formatter);
+                TransientTask t = new TransientTask(name, Integer.parseInt(newDate), runtime);
+                tasks.add(t);
             }
         }
-        else if(this.frequency == 7) {
-
+          /**
+         * if frequency is 7, increment start by one week until start > end, create a transient task
+         * with the new date and same runtime, add this new task to the list of tasks
+        */
+        else if(frequency == 7) {
+            while(start.isBefore(end) || start.isEqual(end)) {
+                start = start.plusWeeks(1);
+                String newDate = start.format(formatter);
+                TransientTask t = new TransientTask(name, Integer.parseInt(newDate), runtime);
+                tasks.add(t);
+            }
         }
         else {
             throw new InvalidAttributeValueException();
@@ -133,4 +150,9 @@ public class Task {
     public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
+
+    public Runtime getRuntime() {
+        return runtime;
+    }
+
 }

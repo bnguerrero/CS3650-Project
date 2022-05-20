@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-import javax.naming.directory.InvalidAttributeValueException;
-
+import javax.management.InvalidAttributeValueException;
 
 public class Schedule {
-    private ArrayList<Task> taskList;
+    public ArrayList<Task> taskList;
 
     public Schedule() {
         taskList = new ArrayList<Task>();
@@ -14,10 +13,34 @@ public class Schedule {
         this.taskList = taskList;
     }
 
-    public void addTask() {
+    public void addTask(Task task) {
+        taskList.add(task);
     }
-    
-    public void viewTask(Task task) {
+
+    public void addTask(RecurringTask task) {
+        taskList.add(task);
+    }
+
+    public void addTask(TransientTask task) {
+        taskList.add(task);
+    }
+    //returns the index location in list of the first task with taskName
+    public int findTask(String taskName) {
+        int taskIndex = -1;
+        for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).getName().equals(taskName)) {
+                taskIndex = i;
+                break;
+            }
+        }
+        return taskIndex;
+    }
+
+    public Task getTask(int index){
+        return taskList.get(index);
+    }
+
+    public void viewTask(Task task) throws javax.naming.directory.InvalidAttributeValueException {
         System.out.println("Task: " + task.getName());
         System.out.println("Date: " + task.getDate());
         System.out.println("Start Time: " + task.getStartTime());
@@ -30,24 +53,48 @@ public class Schedule {
             System.out.println("Type: Recurring");
             System.out.println("End Date: " + task.getEndDate());
             System.out.println("Frequency: " + task.getFrequency());
+            System.out.println();
+            for (int i = 0; i < task.getTasks().size(); i++){
+                System.out.println("Recurrence " + (i+1));
+                System.out.println("Date: " + task.getDate());
+                System.out.println("Start Time: " + task.getStartTime());
+                System.out.println("Duration: " + task.getDuration());
+                // System.out.println("Antitask: " + task.hasAntiTask());
+            }
         }
     }
 
-    public void editTask(Task task) {
-
+    public void editTask(Task task, String newName, int newDate, Runtime newRuntime, boolean antiTaskVal,
+            int newEndDate) {
+        type taskType = task.getType();
+        int taskFreq = task.getFrequency();
+        deleteTask(task);
+        if (taskType == type.TRANSIENT) {
+            TransientTask modifiedTask = new TransientTask(newName, newDate, newRuntime);
+            modifiedTask.setAntiTask(antiTaskVal);
+            addTask(modifiedTask);
+        }
+        if (taskType == type.RECURRING) {
+            RecurringTask modifiedTask = new RecurringTask(newName, newDate, newRuntime, newEndDate, taskFreq);
+            // for (int i = 0; i < task.getTasks().size(); i++){
+            //     task.getTasks().get(i).setDate(newDate);
+            // }
+            modifiedTask.setAntiTask(antiTaskVal);
+            addTask(modifiedTask);
+        }
 
     }
 
     public void deleteTask(Task task) {
         for (int i = 0; i < taskList.size(); i++) {
-            if (taskList.get(i).getName() == task.getName()) {
+            if (taskList.get(i).getName().equals(task.getName())) {
                 taskList.remove(i);
                 break;
             }
         }
     }
 
-    public boolean checkConflicts(Task newTask) throws IllegalArgumentException, InvalidAttributeValueException {
+    public boolean checkConflicts(Task newTask) throws IllegalArgumentException, InvalidAttributeValueException, javax.naming.directory.InvalidAttributeValueException {
         //if the type is recurring, recursively check.
         //call checkConflicts on each transient task contained in the recurring task.
         //if there is an overlap at any point, this will return false.
@@ -104,7 +151,7 @@ public class Schedule {
    
     //checks the runtimes, if they overlap, this says false.
     //this currently doesn't consider tasks that wrap past midnight, as it only checks for things that start on the same day.
-    private boolean conflictHelper(int date1, int date2, Runtime r1, Runtime r2){
+    private boolean conflictHelper(int date1, int date2, Runtime r1, Runtime r2) {
         if(date1 == date2) {
             double endTime1 = r1.startTime + r1.duration;
             double endTime2 = r2.startTime + r2.duration;
@@ -151,21 +198,18 @@ public class Schedule {
         //     return false;
     }
 
-    public void writeSchedule(String filename) {
+    // public void writeSchedule(String filename) {
+    // FileWriter writer = new FileWriter();
+    // writer.write(taskList);
+    // }
 
-    }
+    // public void readSchedule(String filename) {
+    // FileReader reader = new FileReader(this);
+    // reader.read(filename);
+    // }
 
-    public void readSchedule(String filename) {
+    // public void writeScheduleDuration(String filename, int duration) {
 
-    }
-
-    public void writeScheduleDuration(String filename, int duration) {
-
-    }
-
-    public void readScheduleDuration(String filename, int duration) {
-
-    }
 
 }
 
