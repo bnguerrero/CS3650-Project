@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.naming.directory.InvalidAttributeValueException;
 
-enum type {
+enum Type {
     TRANSIENT, RECURRING
 }
 
@@ -14,7 +14,7 @@ public class Task {
     protected int date;
     protected Runtime runtime;
     protected boolean hasAntiTask;
-    protected type typeVal;
+    protected Type typeVal;
 
     //values for RecurringTask
     protected int endDate; // the date gets split into 2, so when pointing to a recurring task, we are
@@ -45,7 +45,7 @@ public class Task {
         this.date = date;
     }
 
-    public Enum getType() {
+    public Type getType() {
         return typeVal;
     }
 
