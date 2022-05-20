@@ -13,7 +13,20 @@ public class Schedule {
         this.taskList = taskList;
     }
 
-    public void addTask() {
+    public void addTask(String name, int date, int time) {
+        if(isNameUnique(name)) {
+            if(isDateValid(date)) {
+                if(isTimeValid(time)) {
+                    // create task and check conflicts 
+                } else {
+                    System.out.println("Task time is not valid");
+                }    
+            } else {
+                System.out.println("Task date is not valid");
+            }
+        } else {
+            System.out.println("Task name is not unique");
+        }
     }
 
     public void viewTask(Task task) {
@@ -28,6 +41,7 @@ public class Schedule {
     }
 
     public void editTask(Task task) {
+
     }
 
     public void deleteTask(Task task) {
@@ -57,5 +71,22 @@ public class Schedule {
 
     public void viewScheduleDuration(String filename, int duration) {
 
+    }
+
+    private boolean isTimeValid(int time) {
+        return false;
+    }
+
+    private boolean isDateValid(int date) {
+        return false;
+    }
+
+    private boolean isNameUnique(String name) {
+        for(Task task : taskList) {
+            if(task.getName().equals(name)) {
+                return false;
+            }
+        }
+        return true; 
     }
 }
