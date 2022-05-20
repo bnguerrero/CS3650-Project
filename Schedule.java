@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Schedule {
     private ArrayList<Task> taskList;
 
@@ -123,7 +122,8 @@ public class Schedule {
     }
 
     public void readSchedule(String filename) {
-
+        FileReader reader = new FileReader();
+        reader.read(filename);
     }
 
     public void writeScheduleDuration(String filename, int duration) {
