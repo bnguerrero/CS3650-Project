@@ -44,7 +44,7 @@ public class FileReader {
                 in.next();
             }
         }
-        finally{
+        catch (Exception e){
             throw new ReadException();
         }
         for(Task task : newTasks){
