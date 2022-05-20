@@ -2,9 +2,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.*;
 import java.util.*;
-public class FileWriter{
+public class JsonWriter{
 
-    public FileWriter(){
+    public JsonWriter(){
     }
 
     public void write(ArrayList<Task> taskList ,String filename){
@@ -20,7 +20,7 @@ public class FileWriter{
         JSONObject json = new JSONObject();
         String taskName = "";
         String type = "";
-        for(Task task : schedule.taskList){
+        for(Task task : taskList){
             JSONObject taskJson = new JSONObject();
             taskName = task.getName();
             taskJson.put("Date", Integer.toString(task.getDate()));
