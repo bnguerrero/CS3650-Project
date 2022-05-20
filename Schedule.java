@@ -122,7 +122,7 @@ public class Schedule {
     }
 
     public void readSchedule(String filename) {
-        FileReader reader = new FileReader();
+        FileReader reader = new FileReader(this);
         reader.read(filename);
     }
 
