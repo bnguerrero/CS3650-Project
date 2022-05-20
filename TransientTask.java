@@ -3,5 +3,8 @@ public class TransientTask extends Task {
     {
         super(name, date, runtime);
         typeVal = type.TRANSIENT;
+        endDate = -1;
+        frequency = 0;
+        tasks = null;
     }
 }

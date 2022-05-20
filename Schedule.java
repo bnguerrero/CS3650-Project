@@ -26,8 +26,8 @@ public class Schedule {
         }
         if (task.getType() == type.RECURRING){
             System.out.println("Type: Recurring");
-            System.out.println("End Date: " + ((RecurringTask)task).getEndDate());
-            System.out.println("Frequency: " + ((RecurringTask)task).getFrequency());
+            System.out.println("End Date: " + task.getEndDate());
+            System.out.println("Frequency: " + task.getFrequency());
         }
     }
 
@@ -122,7 +122,7 @@ public class Schedule {
 
     }
 
-    public void viewSchedule(String filename) {
+    public void readSchedule(String filename) {
 
     }
 
