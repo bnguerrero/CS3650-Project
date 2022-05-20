@@ -134,8 +134,4 @@ public class Schedule {
     public void writeScheduleDuration(String filename, int duration) {
 
     }
-
-    public void viewScheduleDuration(String filename, int duration) {
-
-    }
 }
