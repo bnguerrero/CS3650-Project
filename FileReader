@@ -47,5 +47,8 @@ public class FileReader {
         finally{
             throw new ReadException();
         }
+        for(Task task : newTasks){
+            schedule.add(task);
+        }
     }
 }
