@@ -72,10 +72,6 @@ public class Task {
 
     //methods for RecurringTask:
 
-    public void instantiateTasks() {
-
-    }
-
     public ArrayList<TransientTask> getTasks() {
         return tasks;
     }
