@@ -76,7 +76,7 @@ public class Task {
 
     //methods for RecurringTask:
 
-    public void instantiateTasks() {
+    private void instantiateTasks() {
 
     }
 

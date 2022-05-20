@@ -52,7 +52,6 @@ public class Schedule {
             int newEndDate) throws InvalidAttributeValueException, IllegalArgumentException, javax.naming.directory.InvalidAttributeValueException {
         Type taskType = task.getType();
         int taskFreq = task.getFrequency();
-        deleteTask(task);
         if (taskType == Type.TRANSIENT) {
             TransientTask modifiedTask = new TransientTask(newName, newDate, newRuntime);
             modifiedTask.setAntiTask(antiTaskVal);
