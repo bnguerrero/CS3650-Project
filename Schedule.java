@@ -79,6 +79,17 @@ public class Schedule {
 
     }
 
+    public Task findTask(String name){
+        Task ans = null;
+         for (int i = 0; i < taskList.size(); i++) {
+            if (taskList.get(i).getName().equals(name)) {
+                ans = taskList.get(i);
+                break;
+            }
+        }
+        return ans;
+    }
+    
     public void deleteTask(Task task) {
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).getName().equals(task.getName())) {
