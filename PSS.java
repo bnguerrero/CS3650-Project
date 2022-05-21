@@ -42,7 +42,7 @@ public class PSS {
                             newTask.setAntiTask(true);
                         }
                         taskSchedule.checkConflicts(newTask);
-                        newTasks.add(newTask);
+                        taskSchedule.add(newTask);
                     }
                     else if(choice==2){
                         System.out.println("What is the name of the event?");
@@ -59,7 +59,7 @@ public class PSS {
                         int recFreq = input.nextInt();
                         Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
                         taskSchedule.checkConflicts(newTask);
-                        newTasks.add(newTask);
+                        taskSchedule.add(newTask);
                     }
 
                     
