@@ -197,17 +197,17 @@ public class Schedule {
 
     public void writeSchedule(String filename) {
         JsonWriter writer = new JsonWriter();
-        writer.write(taskList);
+        writer.write(taskList, filename);
     }
 
-    public void readSchedule(String filename) {
+    public void readSchedule(String filename) throws Exception {
         FileReader reader = new FileReader(this);
         reader.read(filename);
     }
 
     public void writeScheduleDuration(String filename, int startDate, int endDate) {
         JsonWriter writer = new JsonWriter(startDate, endDate);
-        writer.write(taskList);
+        writer.write(taskList, filename);
     }
 
 

@@ -15,7 +15,7 @@ public class JsonWriter{
     }
 
     public void write(ArrayList<Task> taskList, String filename){
-        JSONOBject json = makeJson(taskList);
+        JSONObject json = makeJson(taskList);
         try (PrintWriter out = new PrintWriter(new FileWriter(filename))) {
             out.write(json.toString());
         } catch (Exception e) {

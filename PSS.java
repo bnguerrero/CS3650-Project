@@ -3,7 +3,7 @@ import java.util.Scanner;
 import javax.naming.directory.InvalidAttributeValueException;
 
 public class PSS {
-    public static void main(String[] args) throws InvalidAttributeValueException, javax.management.InvalidAttributeValueException, IllegalArgumentException {
+    public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         Schedule taskSchedule = new Schedule();
 
@@ -18,45 +18,45 @@ public class PSS {
             switch (option) {
                 case 1: {
                     
-                    System.out.println("Create Transient or Recurring task?");
-                	System.out.println("Press 1 for Transient");
-                	System.out.println("Press 2 for Recurring");
-                	int choice = input.nextInt();
-                	String transTask = null;
-                	int transDate = -1;
-                	String recTask = null;
-                	int recStartDate = -1;
-                	int recEndDate = -1;
-                	int recFreq = -1;
-                	if (choice == 1) {
-                		Scanner sc = new Scanner(System.in);                		
-                		System.out.println("Name of Transient task: ");
-                		transTask = sc.nextLine();
-                		System.out.println("What is the start date? (YYYYMMDD)");
-                		transDate = sc.nextInt();
-                		sc.close();
-                	} 
-                	else {
-                		Scanner sc = new Scanner(System.in);
-                		System.out.println("Name of Recurring task: ");
-                		recTask = sc.nextLine();
-                		System.out.println("What is the start date? (YYYYMMDD)");
-                		recStartDate = sc.nextInt();
-                		System.out.println("What is the end date? (YYYYMMDD)");
-                		recEndDate = sc.nextInt();
-                		System.out.println("Frequency? (1 for daily, 7 for weekly)");
-                		recFreq = sc.nextInt();
-                		sc.close();
-                	}                
+                    // System.out.println("Create Transient or Recurring task?");
+                	// System.out.println("Press 1 for Transient");
+                	// System.out.println("Press 2 for Recurring");
+                	// int choice = input.nextInt();
+                	// String transTask = null;
+                	// int transDate = -1;
+                	// String recTask = null;
+                	// int recStartDate = -1;
+                	// int recEndDate = -1;
+                	// int recFreq = -1;
+                	// if (choice == 1) {
+                	// 	Scanner sc = new Scanner(System.in);                		
+                	// 	System.out.println("Name of Transient task: ");
+                	// 	transTask = sc.nextLine();
+                	// 	System.out.println("What is the start date? (YYYYMMDD)");
+                	// 	transDate = sc.nextInt();
+                	// 	sc.close();
+                	// } 
+                	// else {
+                	// 	Scanner sc = new Scanner(System.in);
+                	// 	System.out.println("Name of Recurring task: ");
+                	// 	recTask = sc.nextLine();
+                	// 	System.out.println("What is the start date? (YYYYMMDD)");
+                	// 	recStartDate = sc.nextInt();
+                	// 	System.out.println("What is the end date? (YYYYMMDD)");
+                	// 	recEndDate = sc.nextInt();
+                	// 	System.out.println("Frequency? (1 for daily, 7 for weekly)");
+                	// 	recFreq = sc.nextInt();
+                	// 	sc.close();
+                	// }                
                     
                     // for testing
                     Runtime testRuntime = new Runtime();
                     testRuntime.startTime = 20;
                     testRuntime.duration = 60;
-                    RecurringTask testTask1 = new RecurringTask(recTask, recStartDate, testRuntime, recEndDate, recFreq);
-                    TransientTask testTask2 = new TransientTask(transTask, transDate, testRuntime);
-//                     RecurringTask testTask1 = new RecurringTask("testTask1", 1, testRuntime, 100, 7);
-//                     TransientTask testTask2 = new TransientTask("testTask2", 40, testRuntime);
+                    // RecurringTask testTask1 = new RecurringTask(recTask, recStartDate, testRuntime, recEndDate, recFreq);
+                    // TransientTask testTask2 = new TransientTask(transTask, transDate, testRuntime);
+                    RecurringTask testTask1 = new RecurringTask("testTask1", 19900107, testRuntime, 19900130, 7);
+                    TransientTask testTask2 = new TransientTask("testTask2", 19900204, testRuntime);
                     taskSchedule.addTask(testTask1);
                     taskSchedule.addTask(testTask2);
                     break;
@@ -148,11 +148,13 @@ public class PSS {
                 }
                 case 5: {
                     System.out.println("Enter the name of the new .json file");
+                    input.nextLine();
                     taskSchedule.writeSchedule(input.nextLine());
                     break;
                 }
                 case 6: {
                     System.out.println("Enter the name of the .json file to upload");
+                    input.nextLine();
                     taskSchedule.readSchedule(input.nextLine());
                     break;
                 }
