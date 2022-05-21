@@ -231,7 +231,7 @@ public class PSS {
         }
         //year
         else if(increment == 3) {
-            end = start.plusYears(1);
+            end = start.plusMonths(1);
         }
         else {
             throw new IllegalArgumentException();
