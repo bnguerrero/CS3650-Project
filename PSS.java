@@ -24,6 +24,7 @@ public class PSS {
                 	System.out.println("Press 2 for Recurring");
                 	int choice = input.nextInt();
                     Runtime runtime = new Runtime();
+                    input.nextLine();
                     if(choice==1){
                         System.out.println("What is the name of the event?");
                         String name = input.nextLine();
@@ -34,6 +35,7 @@ public class PSS {
                         System.out.println("What is the date of the event? (YYYYMMDD)");
                         int date = input.nextInt();
                         Task newTask = new TransientTask(name, date, runtime);
+                        input.nextLine();
                         System.out.println("Does this have an associated anti-task? (y/n)");
                         String choice2 = input.nextLine();
                         if(choice2.equals("y")){
@@ -120,6 +122,7 @@ public class PSS {
                         System.out.println(
                                 "Edit values: 1) Name 2) Date 3) Start time \n 4) Duration 5) Antitask Status 6) End date \n 7) Complete Edit");
                         int key = input.nextInt();
+                        input.nextLine();
                         switch (key) {
                             case 1:
                                 System.out.println("New Name:");
