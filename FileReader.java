@@ -21,7 +21,7 @@ public class FileReader {
                 taskData.add(next1.substring(1, next1.length()-2));
                 next1 = in.next();
                 if(next1.equals("{")){
-                    while(!(next1.equals("},"))){
+                    while(!(next1.equals("},") || next1.equals("}"))){
                         next1 = in.next();
                         next1 = in.next();
                         if(next1.substring(next1.length()-1).equals(",")){
