@@ -79,7 +79,9 @@ public class PSS {
                     //taskSchedule.addTask(testTask1);
                     //taskSchedule.addTask(testTask2);
                     ArrayList<Task> tempArray = new ArrayList<Task>();
-                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    for(Task task : taskSchedule.taskList){
+                        tempArray.add(null);
+                    }
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
