@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
-import javax.naming.directory.InvalidAttributeValueException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PSS {
     public static void main(String[] args) throws Exception {
@@ -171,15 +171,33 @@ public class PSS {
                     break;
                 }
                 case 10: {
-                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    System.out.println("Enter the name of the new .json file: ");
+                    String filename = input.next();
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 1);
+                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 11: {
-                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    System.out.println("Enter the name of the new .json file: ");
+                    String filename = input.next();
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 2);
+                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 12: {
-                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    System.out.println("Enter the name of the new .json file: ");
+                    String filename = input.next();
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 3);
+                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 0: {
@@ -192,5 +210,35 @@ public class PSS {
 
         }
 
+    }
+    //return the proper end date
+    private static int durationHelper(String dateString, int increment) {
+        int year = Integer.parseInt(dateString.substring(0, 4));
+        int month = Integer.parseInt(dateString.substring(4, 6));
+        int day = Integer.parseInt(dateString.substring(6, 8));
+
+        LocalDate start = LocalDate.of(year, month, day);
+        LocalDate end = start;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        //day 
+        if(increment == 1) {
+            end = start.plusDays(1);
+        } 
+        //month
+        else if(increment == 2) {
+            end = start.plusWeeks(1);
+        }
+        //year
+        else if(increment == 3) {
+            end = start.plusYears(1);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+
+        String temp = end.format(formatter);
+
+        return Integer.parseInt(temp);
     }
 }
