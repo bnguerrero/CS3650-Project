@@ -12,12 +12,13 @@ public class PSS {
             System.out.println();
             System.out.println(
                     "Please select an option below: \n 1. Create a task \n 2. View a task \n 3. Delete a task \n 4. Edit a task"
-                            + "\n 5. Write the schedule to a file \n 6. Read the Schedule to a file \n 7. View schedule for 1 day \n 8. View schedule for 1 week"
+                            + "\n 5. Write the schedule to a file \n 6. Read the Schedule from a file \n 7. View schedule for 1 day \n 8. View schedule for 1 week"
                             + "\n 9. View schedule for 1 month \n 10. Write schedule for 1 day \n 11. Write schedule for 1 week \n 12. Write schedule for 1 month \n 0. Exit");
             int option = input.nextInt();
 
             switch (option) {
-                case 1: {
+                //create a task
+                case 1: { 
                 
                     System.out.println("Create Transient or Recurring task?");
                 	System.out.println("Press 1 for Transient");
@@ -84,6 +85,7 @@ public class PSS {
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
+                //View a task
                 case 2: {
                     System.out.println("Enter task to view:");
                     input.nextLine();
@@ -96,6 +98,7 @@ public class PSS {
                     taskSchedule.viewTask(taskSchedule.getTask(loc));
                     break;
                 }
+                 //Delete a task
                 case 3: {
                     System.out.println("Enter task to delete:");
                     input.nextLine();
@@ -113,6 +116,7 @@ public class PSS {
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
+                //Edit a task
                 case 4: {
                     System.out.println("Enter task to edit:");
                     input.nextLine();
@@ -183,12 +187,14 @@ public class PSS {
                     }
 
                 }
+                //Write the schedule to a file
                 case 5: {
                     System.out.println("Enter the name of the new .json file");
                     input.nextLine();
                     taskSchedule.writeSchedule(input.nextLine());
                     break;
                 }
+                //Read the Schedule from a file
                 case 6: {
                     System.out.println("Enter the name of the .json file to upload");
                     input.nextLine();
@@ -200,18 +206,34 @@ public class PSS {
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
+                //View schedule for 1 day
                 case 7: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 1);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
+                //View schedule for 1 week
                 case 8: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 2);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
+                //View schedule for 1 month
                 case 9: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 2);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
+                //Write schedule for 1 day
                 case 10: {
                     System.out.println("Enter the name of the new .json file: ");
                     String filename = input.next();
@@ -222,6 +244,7 @@ public class PSS {
                     taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
+                //Write schedule for 1 week
                 case 11: {
                     System.out.println("Enter the name of the new .json file: ");
                     String filename = input.next();
@@ -232,6 +255,7 @@ public class PSS {
                     taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
+                //Write schedule for 1 month
                 case 12: {
                     System.out.println("Enter the name of the new .json file: ");
                     String filename = input.next();
