@@ -210,14 +210,14 @@ public class Schedule {
         writer.write(taskList, filename);
     }
     
-    public void viewScheduleDuration(int startDate, int endDate){
+    public void viewScheduleDuration(int startDate, int endDate) throws javax.naming.directory.InvalidAttributeValueException{
         for (Task task : taskList){
-                if ((task.getDate() > startDate) && (task.getDate() < endDate)
-                    task.showTask();
+                if ((task.getDate() > startDate) && (task.getDate() < endDate))
+                    task.show();
             }
     }
     
-    public static void mergeSort(ArrayList<Task> arrayToSort, ArrayList<Task> tempArray, int first, int last) {
+    public void mergeSort(ArrayList<Task> arrayToSort, ArrayList<Task> tempArray, int first, int last) {
         if (last - first == 1) {
             return;
         }
