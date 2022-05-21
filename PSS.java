@@ -61,7 +61,9 @@ public class PSS {
                         System.out.println("Frequency? (1 for daily, 7 for weekly)");
                         int recFreq = input.nextInt();
                         Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
-                        taskSchedule.checkConflicts(newTask);
+                        for(Task task : taskSchedule.taskList){
+                            tempArray.add(null);
+                        }
                         taskSchedule.addTask(newTask);
                     }
 
@@ -105,7 +107,9 @@ public class PSS {
                     }
                     taskSchedule.deleteTask(taskSchedule.getTask(loc));
                     ArrayList<Task> tempArray = new ArrayList<Task>();
-                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    for(Task task : taskSchedule.taskList){
+                        tempArray.add(null);
+                    }
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
@@ -139,7 +143,9 @@ public class PSS {
                                 newDate = input.nextInt();
                                 ArrayList<Task> tempArray = new ArrayList<Task>();
                                 tempArray.ensureCapacity(taskSchedule.taskList.size());
-                                taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
+                                for(Task task : taskSchedule.taskList){
+                                    tempArray.add(null);
+                                }
 
                                 break;
                             case 3:
@@ -188,7 +194,9 @@ public class PSS {
                     input.nextLine();
                     taskSchedule.readSchedule(input.nextLine());
                     ArrayList<Task> tempArray = new ArrayList<Task>();
-                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    for(Task task : taskSchedule.taskList){
+                        tempArray.add(null);
+                    }
                     taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
