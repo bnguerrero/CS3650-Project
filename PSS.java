@@ -31,8 +31,10 @@ public class PSS {
                         String name = input.nextLine();
                         System.out.println("When does the event start?");
                         runtime.startTime = input.nextDouble();
+                        runtime.startTime = getNear15Minute((int)runtime.startTime*60) / 60;
                         System.out.println("How long is the event?");
                         runtime.duration = input.nextDouble();
+                        runtime.duration = getNear15Minute((int)runtime.duration*60) / 60;
                         System.out.println("What is the date of the event? (YYYYMMDD)");
                         int date = input.nextInt();
                         Task newTask = new TransientTask(name, date, runtime);
@@ -308,4 +310,16 @@ public class PSS {
         return Integer.parseInt(temp);
     }
 }
+
+//round to the nearest 15 minutes
+public static double getNear15Minute(int minutes){
+        int mod = minutes%15; 
+        double res = 0 ;
+        if((mod) >=8){
+            res = minutes+(15 - mod);
+        }else{
+            res = minutes-mod;
+        }
+        return res; 
+    }
 
