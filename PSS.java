@@ -56,8 +56,7 @@ public class PSS {
                         System.out.println("What is the end date of the event? (YYYYMMDD)");
                         int endDate = input.nextInt();
                         System.out.println("Frequency? (1 for daily, 7 for weekly)");
-                	 	int recFreq = input.nextInt();
-
+                        int recFreq = input.nextInt();
                         Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
                         taskSchedule.checkConflicts(newTask);
                         newTasks.add(newTask);
