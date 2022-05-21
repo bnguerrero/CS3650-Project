@@ -147,11 +147,13 @@ public class PSS {
                     }
                 }
                 case 5: {
-                    // taskSchedule.writeSchedule(filename);
+                    System.out.println("Enter the name of the new .json file");
+                    taskSchedule.writeSchedule(input.nextLine());
                     break;
                 }
                 case 6: {
-                    // taskSchedule.readSchedule(filename);
+                    System.out.println("Enter the name of the .json file to upload");
+                    taskSchedule.readSchedule(input.nextLine());
                     break;
                 }
                 case 7: {
