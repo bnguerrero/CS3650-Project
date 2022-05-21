@@ -201,15 +201,27 @@ public class PSS {
                     break;
                 }
                 case 7: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 1);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
                 case 8: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 2);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
                 case 9: {
-                    // taskSchedule.viewScheduleDuration(filename, duration);
+                    System.out.println("Enter the start date: ");
+                    int startDate = input.nextInt();
+                    String s = Integer.toString(startDate);
+                    int endDate = durationHelper(s, 3);
+                    taskSchedule.viewScheduleDuration(startDate, endDate);
                     break;
                 }
                 case 10: {
