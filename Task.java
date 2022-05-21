@@ -128,4 +128,37 @@ public class Task {
             }
         }
     }
+    
+        public static void mergeSort(ArrayList<Task> arrayToSort, ArrayList<Task> tempArray, int first, int last) {
+        if (last - first == 1) {
+            return;
+        }
+
+        int mid = (first + last) / 2;
+
+        mergeSort(arrayToSort, tempArray, first, mid);
+        mergeSort(arrayToSort, tempArray, mid, last);
+
+        int li = first;
+        int mergeIndex = first;
+        int ri = mid;
+        while (li < mid && ri < last) {
+            if (arrayToSort.get(li).getDate() < (arrayToSort.get(ri).getDate())) {
+                tempArray.set(mergeIndex++, arrayToSort.get(li++));
+            } else {
+                tempArray.set(mergeIndex++, arrayToSort.get(ri++));
+            }
+        }
+        while (li < mid) {
+            tempArray.set(mergeIndex++, arrayToSort.get(li++));
+
+        }
+        while (ri < last) {
+            tempArray.set(mergeIndex++, arrayToSort.get(ri++));
+        }
+        for (int i = first; i < last; i++) {
+            arrayToSort.set(i, tempArray.get(i));
+        }
+    }
+
 }
