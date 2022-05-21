@@ -17,7 +17,7 @@ public class PSS {
 
             switch (option) {
                 case 1: {
-                    // for testing
+                    
                     System.out.println("Create Transient or Recurring task?");
                 	System.out.println("Press 1 for Transient");
                 	System.out.println("Press 2 for Recurring");
@@ -47,19 +47,9 @@ public class PSS {
                 		System.out.println("Frequency? (1 for daily, 7 for weekly)");
                 		recFreq = sc.nextInt();
                 		sc.close();
-                	}
-//                     System.out.println("Create Transient or Recurring task?");
-//                 	System.out.println("Press 1 for Transient");
-//                 	System.out.println("Press 2 for Recurring");
-//                 	int choice = input.nextInt();
-//                 	if (choice == 1) {
-//                 		System.out.println("Name of Transient task: ");
-//                 	} else {
-//                 		System.out.println("Name of Recurring task: ");
-                		
-//                 	}
+                	}                
                     
-                    
+                    // for testing
                     Runtime testRuntime = new Runtime();
                     testRuntime.startTime = 20;
                     testRuntime.duration = 60;
