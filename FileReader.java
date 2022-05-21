@@ -13,6 +13,7 @@ public class FileReader {
         String next2 = "";
         ArrayList<String> taskData = new ArrayList<String>();
         ArrayList<Task> newTasks = new ArrayList<Task>();
+        String type = "";
         try{
             in.next();
             while(in.hasNext()){
@@ -34,12 +35,41 @@ public class FileReader {
                             throw new Exception("Invalid format");
                         }
                         taskData.add(next2);
+                        count++;
                     }
                 }
                 else{
                     throw new Exception("Invalid format");
                 }
-                newTasks.add(new Task(taskData.get(0), taskData.get(1), taskData.get(2)));
+                if(taskData.get(2).equals("TRANSIENT")){
+                    Runtime runtime = new Runtime();
+                    runtime.startTime = Double.parseDouble(taskData.get(3));
+                    runtime.duration = Double.parseDouble(taskData.get(4));
+                    Task newTask = new TransientTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime);
+                    if(taskData.get(5).equals("True")){
+                        newTask.setAntiTask(true);
+                    }
+                    else if(taskData.get(5).equals("False")){
+                        newTask.setAntiTask(false);
+                    }
+                    else{
+                        throw new Exception("Invalid format");
+                    }
+                    schedule.checkConflicts(newTask);
+                    newTasks.add(newTask);
+                }
+                else if(taskData.get(2).equals("RECURRING")){
+                    Runtime runtime = new Runtime();
+                    runtime.startTime = Double.parseDouble(taskData.get(3));
+                    runtime.duration = Double.parseDouble(taskData.get(4));
+                    Task newTask = new RecurringTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime, Integer.parseInt(taskData.get(7)), Integer.parseInt(taskData.get(8)));
+                    schedule.checkConflicts(newTask);
+                    newTasks.add(newTask);
+
+                }
+                else{
+                    throw new Exception("Invalid format");
+                }
                 in.next();
                 in.next();
             }
