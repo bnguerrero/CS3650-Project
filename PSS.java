@@ -175,7 +175,7 @@ public class PSS {
                     break;
                 }
                 case 12: {
-                    // taskSchedule.writeScheduleDuration(filename, duration);
+                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 0: {
