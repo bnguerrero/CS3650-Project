@@ -61,9 +61,7 @@ public class PSS {
                         System.out.println("Frequency? (1 for daily, 7 for weekly)");
                         int recFreq = input.nextInt();
                         Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
-                        for(Task task : taskSchedule.taskList){
-                            tempArray.add(null);
-                        }
+                        taskSchedule.checkConflicts(newTask);
                         taskSchedule.addTask(newTask);
                     }
 
@@ -201,27 +199,15 @@ public class PSS {
                     break;
                 }
                 case 7: {
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 1);
-                    taskSchedule.viewScheduleDuration(startDate, endDate);
+                    // taskSchedule.viewScheduleDuration(filename, duration);
                     break;
                 }
                 case 8: {
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 2);
-                    taskSchedule.viewScheduleDuration(startDate, endDate);
+                    // taskSchedule.viewScheduleDuration(filename, duration);
                     break;
                 }
                 case 9: {
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 3);
-                    taskSchedule.viewScheduleDuration(startDate, endDate);
+                    // taskSchedule.viewScheduleDuration(filename, duration);
                     break;
                 }
                 case 10: {
