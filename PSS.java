@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import javax.naming.directory.InvalidAttributeValueException;
 
 public class PSS {
     public static void main(String[] args) throws Exception {
@@ -24,7 +23,7 @@ public class PSS {
                 	System.out.println("Press 1 for Transient");
                 	System.out.println("Press 2 for Recurring");
                 	int choice = input.nextInt();
-
+                    Runtime runtime = new Runtime();
                     if(choice==1){
                         System.out.println("What is the name of the event?");
                         String name = input.nextLine();
@@ -36,15 +35,15 @@ public class PSS {
                         int date = input.nextInt();
                         Task newTask = new TransientTask(name, date, runtime);
                         System.out.println("Does this have an associated anti-task? (y/n)");
-                        String choice = input.nextLine();
-                        if(choice.equals("y")){
+                        String choice2 = input.nextLine();
+                        if(choice2.equals("y")){
                             newTask.setAntiTask(true);
                         }
                         else{
                             newTask.setAntiTask(true);
                         }
                         taskSchedule.checkConflicts(newTask);
-                        taskSchedule.add(newTask);
+                        taskSchedule.addTask(newTask);
                     }
                     else if(choice==2){
                         System.out.println("What is the name of the event?");
@@ -61,7 +60,7 @@ public class PSS {
                         int recFreq = input.nextInt();
                         Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
                         taskSchedule.checkConflicts(newTask);
-                        taskSchedule.add(newTask);
+                        taskSchedule.addTask(newTask);
                     }
 
                     
