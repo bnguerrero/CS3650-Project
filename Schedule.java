@@ -195,17 +195,20 @@ public class Schedule {
         //     return false;
     }
 
-    // public void writeSchedule(String filename) {
-    // FileWriter writer = new FileWriter();
-    // writer.write(taskList);
-    // }
+    public void writeSchedule(String filename) {
+        JsonWriter writer = new JsonWriter();
+        writer.write(taskList);
+    }
 
-    // public void readSchedule(String filename) {
-    // FileReader reader = new FileReader(this);
-    // reader.read(filename);
-    // }
+    public void readSchedule(String filename) {
+        FileReader reader = new FileReader(this);
+        reader.read(filename);
+    }
 
-    // public void writeScheduleDuration(String filename, int duration) {
+    public void writeScheduleDuration(String filename, int startDate, int endDate) {
+        JsonWriter writer = new JsonWriter(startDate, endDate);
+        writer.write(taskList);
+    }
 
 
 }
