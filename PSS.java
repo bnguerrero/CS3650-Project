@@ -13,7 +13,8 @@ public class PSS {
             System.out.println(
                     "Please select an option below: \n 1. Create a task \n 2. View a task \n 3. Delete a task \n 4. Edit a task"
                             + "\n 5. Write the schedule to a file \n 6. Read the Schedule from a file \n 7. View schedule for 1 day \n 8. View schedule for 1 week"
-                            + "\n 9. View schedule for 1 month \n 10. Write schedule for 1 day \n 11. Write schedule for 1 week \n 12. Write schedule for 1 month \n 0. Exit");
+                            + "\n 9. View schedule for 1 month \n 10. Write schedule for 1 day \n 11. Write schedule for 1 week \n 12. Write schedule for 1 month \n"
+                            + "13. set an anti-task \n 14. remove an anti-task \n 0. Exit");
             int option = input.nextInt();
 
             switch (option) {
@@ -266,6 +267,21 @@ public class PSS {
                     taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
+                //set anti task
+                case 13:{
+                    System.out.println("Enter the name of the task to add an anti-task to: ");
+                    String name = input.next();
+                    taskSchedule.findTask(name).setAntiTask(true);
+                    break;
+                }
+                //remove anti task
+                case 14:{
+                    System.out.println("Enter the name of the task to remove an anti-task from: ");
+                    String name = input.next();
+                    taskSchedule.findTask(name).setAntiTask(false);
+                    break;
+                }
+                //exit
                 case 0: {
                     input.close();
                     System.exit(0);
