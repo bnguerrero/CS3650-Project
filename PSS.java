@@ -22,12 +22,12 @@ public class PSS {
                 	System.out.println("Press 1 for Transient");
                 	System.out.println("Press 2 for Recurring");
                 	int choice = input.nextInt();
-                	String transTask;
-                	int transDate;
-                	String recTask;
-                	int recStartDate;
-                	int recEndDate;
-                	int recFreq;
+                	String transTask = null;
+                	int transDate = -1;
+                	String recTask = null;
+                	int recStartDate = -1;
+                	int recEndDate = -1;
+                	int recFreq = -1;
                 	if (choice == 1) {
                 		Scanner sc = new Scanner(System.in);                		
                 		System.out.println("Name of Transient task: ");
