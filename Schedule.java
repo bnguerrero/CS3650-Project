@@ -210,6 +210,13 @@ public class Schedule {
         writer.write(taskList, filename);
     }
     
+    public void viewScheduleDuration(int startDate, int endDate){
+        for (Task task : taskList){
+                if ((task.getDate() > startDate) && (task.getDate() < endDate)
+                    task.showTask();
+            }
+    }
+    
     public static void mergeSort(ArrayList<Task> arrayToSort, ArrayList<Task> tempArray, int first, int last) {
         if (last - first == 1) {
             return;
