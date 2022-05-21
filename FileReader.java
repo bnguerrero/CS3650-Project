@@ -20,8 +20,7 @@ public class FileReader {
                 next1 = in.next();
                 taskData.add(next1.substring(1, next1.length()-2));
                 next1 = in.next();
-                next2 = in.next();
-                if(next1.equals("[") && next2.equals("{")){
+                if(next1.equals("{")){
                     while(!(next1.equals("},"))){
                         next1 = in.next();
                         next2 = in.next();
