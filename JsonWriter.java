@@ -48,7 +48,6 @@ public class JsonWriter{
                 taskJson.put("Has Anti-Task", "False");
             }
             if(type.equals("RECURRING")){
-                taskJson.put("Tasks", makeJson(task.getTasks()));
                 taskJson.put("End Date", Integer.toString(task.getEndDate()));
                 taskJson.put("Frequency", Integer.toString(task.getFrequency()));
             }
