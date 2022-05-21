@@ -39,16 +39,16 @@ public class JsonWriter{
             taskJson.put("Date", Integer.toString(date));
             type = task.getType().toString();
             taskJson.put("Type", type);
-            taskJson.put("Start Time", task.getStartTime() + "");
+            taskJson.put("Start_Time", task.getStartTime() + "");
             taskJson.put("Duration", task.getDuration() + "");
             if(task.hasAntiTask()){
-                taskJson.put("Has Anti-Task", "True");
+                taskJson.put("Has_Anti-Task", "True");
             }
             else{
-                taskJson.put("Has Anti-Task", "False");
+                taskJson.put("Has_Anti-Task", "False");
             }
             if(type.equals("RECURRING")){
-                taskJson.put("End Date", Integer.toString(task.getEndDate()));
+                taskJson.put("End_Date", Integer.toString(task.getEndDate()));
                 taskJson.put("Frequency", Integer.toString(task.getFrequency()));
             }
             json.put(taskName, taskJson);
