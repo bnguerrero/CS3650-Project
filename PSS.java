@@ -77,6 +77,9 @@ public class PSS {
                     //TransientTask testTask2 = new TransientTask("testTask2", 19900204, testRuntime);
                     //taskSchedule.addTask(testTask1);
                     //taskSchedule.addTask(testTask2);
+                    ArrayList<Task> tempArray = new ArrayList<Task>();
+                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
                 case 2: {
@@ -101,6 +104,9 @@ public class PSS {
                         break;
                     }
                     taskSchedule.deleteTask(taskSchedule.getTask(loc));
+                    ArrayList<Task> tempArray = new ArrayList<Task>();
+                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
                 case 4: {
@@ -161,9 +167,14 @@ public class PSS {
                                 taskSchedule.editTask(taskSchedule.getTask(loc), newName, newDate, newRuntime, antiTaskStatus, newEndDate);
                                 break;
                             default:
+
                                 break;
                         }
                     }
+                    ArrayList<Task> tempArray = new ArrayList<Task>();
+                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
+
                 }
                 case 5: {
                     System.out.println("Enter the name of the new .json file");
@@ -175,6 +186,9 @@ public class PSS {
                     System.out.println("Enter the name of the .json file to upload");
                     input.nextLine();
                     taskSchedule.readSchedule(input.nextLine());
+                    ArrayList<Task> tempArray = new ArrayList<Task>();
+                    tempArray.ensureCapacity(taskSchedule.taskList.size());
+                    taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
                     break;
                 }
                 case 7: {
