@@ -25,7 +25,7 @@ public class RecurringTask extends Task {
         instantiateTasks();
     }
 
-    public void instantiateTasks() throws InvalidAttributeValueException {
+    private void instantiateTasks() throws InvalidAttributeValueException {
         String s = Integer.toString(date);
         String e = Integer.toString(endDate);
 

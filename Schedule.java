@@ -64,11 +64,11 @@ public class Schedule {
         if (taskType == Type.RECURRING) {
             RecurringTask modifiedTask = new RecurringTask(newName, newDate, newRuntime, newEndDate, taskFreq);
             modifiedTask.setAntiTask(antiTaskVal);
-            for (int i = 0; i < task.getTasks().size(); i++) {
-                task.getTasks().get(i).setDate(newDate);
-                task.getTasks().get(i).setStartTime(newRuntime.startTime);
-                task.getTasks().get(i).setDuration(newRuntime.duration);
-            }
+            // for (int i = 0; i < task.getTasks().size(); i++) {
+            //     task.getTasks().get(i).setDate(newDate);
+            //     task.getTasks().get(i).setStartTime(newRuntime.startTime);
+            //     task.getTasks().get(i).setDuration(newRuntime.duration);
+            // }
             if (checkConflicts(modifiedTask) == true) {
                 deleteTask(task);
                 addTask(modifiedTask);

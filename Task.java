@@ -1,8 +1,5 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import javax.naming.directory.InvalidAttributeValueException;
 
 enum Type {
     TRANSIENT, RECURRING
@@ -74,10 +71,6 @@ public class Task {
     }
 
     // methods for RecurringTask:
-
-    private void instantiateTasks() {
-
-    }
 
     // creates a list of transient tasks for a recurring task
     public ArrayList<TransientTask> getTasks() {
