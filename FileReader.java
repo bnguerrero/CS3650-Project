@@ -39,8 +39,8 @@ public class FileReader {
                 }
                 if(taskData.get(1).equals("TRANSIENT")){
                     Runtime runtime = new Runtime();
-                    runtime.startTime = Double.parseDouble(taskData.get(3));
-                    runtime.duration = Double.parseDouble(taskData.get(4));
+                    runtime.startTime = Double.parseDouble(taskData.get(2));
+                    runtime.duration = Double.parseDouble(taskData.get(3));
                     Task newTask = new TransientTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime);
                     if(taskData.get(5).equals("True")){
                         newTask.setAntiTask(true);
@@ -56,8 +56,8 @@ public class FileReader {
                 }
                 else if(taskData.get(1).equals("RECURRING")){
                     Runtime runtime = new Runtime();
-                    runtime.startTime = Double.parseDouble(taskData.get(3));
-                    runtime.duration = Double.parseDouble(taskData.get(4));
+                    runtime.startTime = Double.parseDouble(taskData.get(2));
+                    runtime.duration = Double.parseDouble(taskData.get(3));
                     Task newTask = new RecurringTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime, Integer.parseInt(taskData.get(7)), Integer.parseInt(taskData.get(8)));
                     schedule.checkConflicts(newTask);
                     newTasks.add(newTask);
