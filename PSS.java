@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
+import javax.naming.directory.InvalidAttributeValueException;
 
 public class PSS {
     public static void main(String[] args) throws Exception {
@@ -17,48 +17,64 @@ public class PSS {
 
             switch (option) {
                 case 1: {
+                
+                    System.out.println("Create Transient or Recurring task?");
+                	System.out.println("Press 1 for Transient");
+                	System.out.println("Press 2 for Recurring");
+                	int choice = input.nextInt();
+
+                    if(choice==1){
+                        System.out.println("What is the name of the event?");
+                        String name = input.nextLine();
+                        System.out.println("When does the event start?");
+                        runtime.startTime = input.nextDouble();
+                        System.out.println("How long is the event?");
+                        runtime.duration = input.nextDouble();
+                        System.out.println("What is the date of the event? (YYYYMMDD)");
+                        int date = input.nextInt();
+                        Task newTask = new TransientTask(name, date, runtime);
+                        System.out.println("Does this have an associated anti-task? (y/n)");
+                        String choice = input.nextLine();
+                        if(choice.equals("y")){
+                            newTask.setAntiTask(true);
+                        }
+                        else{
+                            newTask.setAntiTask(true);
+                        }
+                        taskSchedule.checkConflicts(newTask);
+                        newTasks.add(newTask);
+                    }
+                    else if(choice==2){
+                        System.out.println("What is the name of the event?");
+                        String name = input.nextLine();
+                        System.out.println("When does the event start?");
+                        runtime.startTime = input.nextDouble();
+                        System.out.println("How long is the event?");
+                        runtime.duration = input.nextDouble();
+                        System.out.println("What is the date of the event? (YYYYMMDD)");
+                        int date = input.nextInt();
+                        System.out.println("What is the end date of the event? (YYYYMMDD)");
+                        int endDate = input.nextInt();
+                        System.out.println("Frequency? (1 for daily, 7 for weekly)");
+                	 	int recFreq = input.nextInt();
+
+                        Task newTask = new RecurringTask(name, date, runtime, endDate, recFreq);
+                        taskSchedule.checkConflicts(newTask);
+                        newTasks.add(newTask);
+                    }
+
                     
-                    // System.out.println("Create Transient or Recurring task?");
-                	// System.out.println("Press 1 for Transient");
-                	// System.out.println("Press 2 for Recurring");
-                	// int choice = input.nextInt();
-                	// String transTask = null;
-                	// int transDate = -1;
-                	// String recTask = null;
-                	// int recStartDate = -1;
-                	// int recEndDate = -1;
-                	// int recFreq = -1;
-                	// if (choice == 1) {
-                	// 	Scanner sc = new Scanner(System.in);                		
-                	// 	System.out.println("Name of Transient task: ");
-                	// 	transTask = sc.nextLine();
-                	// 	System.out.println("What is the start date? (YYYYMMDD)");
-                	// 	transDate = sc.nextInt();
-                	// 	sc.close();
-                	// } 
-                	// else {
-                	// 	Scanner sc = new Scanner(System.in);
-                	// 	System.out.println("Name of Recurring task: ");
-                	// 	recTask = sc.nextLine();
-                	// 	System.out.println("What is the start date? (YYYYMMDD)");
-                	// 	recStartDate = sc.nextInt();
-                	// 	System.out.println("What is the end date? (YYYYMMDD)");
-                	// 	recEndDate = sc.nextInt();
-                	// 	System.out.println("Frequency? (1 for daily, 7 for weekly)");
-                	// 	recFreq = sc.nextInt();
-                	// 	sc.close();
-                	// }                
                     
                     // for testing
-                    Runtime testRuntime = new Runtime();
-                    testRuntime.startTime = 20;
-                    testRuntime.duration = 60;
+                    //Runtime testRuntime = new Runtime();
+                    //testRuntime.startTime = 20;
+                    //testRuntime.duration = 60;
                     // RecurringTask testTask1 = new RecurringTask(recTask, recStartDate, testRuntime, recEndDate, recFreq);
                     // TransientTask testTask2 = new TransientTask(transTask, transDate, testRuntime);
-                    RecurringTask testTask1 = new RecurringTask("testTask1", 19900107, testRuntime, 19900130, 7);
-                    TransientTask testTask2 = new TransientTask("testTask2", 19900204, testRuntime);
-                    taskSchedule.addTask(testTask1);
-                    taskSchedule.addTask(testTask2);
+                    //RecurringTask testTask1 = new RecurringTask("testTask1", 19900107, testRuntime, 19900130, 7);
+                    //TransientTask testTask2 = new TransientTask("testTask2", 19900204, testRuntime);
+                    //taskSchedule.addTask(testTask1);
+                    //taskSchedule.addTask(testTask2);
                     break;
                 }
                 case 2: {
@@ -171,33 +187,15 @@ public class PSS {
                     break;
                 }
                 case 10: {
-                    System.out.println("Enter the name of the new .json file: ");
-                    String filename = input.next();
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 1);
-                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 11: {
-                    System.out.println("Enter the name of the new .json file: ");
-                    String filename = input.next();
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 2);
-                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 12: {
-                    System.out.println("Enter the name of the new .json file: ");
-                    String filename = input.next();
-                    System.out.println("Enter the start date: ");
-                    int startDate = input.nextInt();
-                    String s = Integer.toString(startDate);
-                    int endDate = durationHelper(s, 3);
-                    taskSchedule.writeScheduleDuration(filename, startDate, endDate);
+                    // taskSchedule.writeScheduleDuration(filename, startDate, endDate);
                     break;
                 }
                 case 0: {
@@ -210,35 +208,5 @@ public class PSS {
 
         }
 
-    }
-    //return the proper end date
-    private static int durationHelper(String dateString, int increment) {
-        int year = Integer.parseInt(dateString.substring(0, 4));
-        int month = Integer.parseInt(dateString.substring(4, 6));
-        int day = Integer.parseInt(dateString.substring(6, 8));
-
-        LocalDate start = LocalDate.of(year, month, day);
-        LocalDate end = start;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
-        //day 
-        if(increment == 1) {
-            end = start.plusDays(1);
-        } 
-        //month
-        else if(increment == 2) {
-            end = start.plusWeeks(1);
-        }
-        //year
-        else if(increment == 3) {
-            end = start.plusYears(1);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
-
-        String temp = end.format(formatter);
-
-        return Integer.parseInt(temp);
     }
 }
