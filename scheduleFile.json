@@ -1,0 +1,18 @@
+{
+  "testTask2": {
+    "Type": "TRANSIENT",
+    "Duration": "60.0",
+    "Start Time": "20.0",
+    "Has Anti-Task": "False",
+    "Date": "19900204"
+  },
+  "testTask1": {
+    "Type": "RECURRING",
+    "End Date": "19900130",
+    "Frequency": "7",
+    "Duration": "60.0",
+    "Start Time": "20.0",
+    "Has Anti-Task": "False",
+    "Date": "19900107"
+  }
+}
