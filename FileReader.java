@@ -21,19 +21,16 @@ public class FileReader {
                 taskData.add(next1.substring(1, next1.length()-2));
                 next1 = in.next();
                 if(next1.equals("{")){
-                    while(!(next1.equals("},") || next1.equals("}"))){
+                    while(!(next1.equals("},"))){
                         next1 = in.next();
-                        next2 = in.next();
-                        if(next2.substring(next2.length()-1).equals(",")){
-                            next2 = next2.substring(1, next2.length()-2);
+                        next1 = in.next();
+                        if(next1.substring(next1.length()-1).equals(",")){
+                            next1 = next1.substring(1, next1.length()-2);
                         }
-                        else if(next2.substring(next2.length()-1).equals("\"")){
-                            next2 = next2.substring(1, next2.length()-1);
+                        else if(next1.substring(next1.length()-1).equals("\"")){
+                            next1 = next1.substring(1, next1.length()-1);
                         }
-                        else{
-                            throw new Exception("Invalid format");
-                        }
-                        taskData.add(next2);
+                        taskData.add(next1);
                         // count++;
                     }
                 }
