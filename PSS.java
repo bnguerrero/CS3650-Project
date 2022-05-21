@@ -137,6 +137,10 @@ public class PSS {
                             case 2:
                                 System.out.println("New Start Date:");
                                 newDate = input.nextInt();
+                                ArrayList<Task> tempArray = new ArrayList<Task>();
+                                tempArray.ensureCapacity(taskSchedule.taskList.size());
+                                taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
+
                                 break;
                             case 3:
                                 System.out.println("New Start Time:");
@@ -171,9 +175,6 @@ public class PSS {
                                 break;
                         }
                     }
-                    ArrayList<Task> tempArray = new ArrayList<Task>();
-                    tempArray.ensureCapacity(taskSchedule.taskList.size());
-                    taskSchedule.mergeSort(taskSchedule.taskList, tempArray, 0, taskSchedule.taskList.size());
 
                 }
                 case 5: {
