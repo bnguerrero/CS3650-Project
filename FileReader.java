@@ -37,7 +37,7 @@ public class FileReader {
                 else{
                     throw new Exception("Invalid format");
                 }
-                if(taskData.get(2).equals("TRANSIENT")){
+                if(taskData.get(1).equals("TRANSIENT")){
                     Runtime runtime = new Runtime();
                     runtime.startTime = Double.parseDouble(taskData.get(3));
                     runtime.duration = Double.parseDouble(taskData.get(4));
@@ -54,7 +54,7 @@ public class FileReader {
                     schedule.checkConflicts(newTask);
                     newTasks.add(newTask);
                 }
-                else if(taskData.get(2).equals("RECURRING")){
+                else if(taskData.get(1).equals("RECURRING")){
                     Runtime runtime = new Runtime();
                     runtime.startTime = Double.parseDouble(taskData.get(3));
                     runtime.duration = Double.parseDouble(taskData.get(4));
