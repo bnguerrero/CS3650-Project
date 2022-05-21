@@ -41,11 +41,11 @@ public class FileReader {
                     Runtime runtime = new Runtime();
                     runtime.startTime = Double.parseDouble(taskData.get(2));
                     runtime.duration = Double.parseDouble(taskData.get(3));
-                    Task newTask = new TransientTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime);
-                    if(taskData.get(5).equals("True")){
+                    Task newTask = new TransientTask(taskData.get(0), Integer.parseInt(taskData.get(5)), runtime);
+                    if(taskData.get(4).equals("True")){
                         newTask.setAntiTask(true);
                     }
-                    else if(taskData.get(5).equals("False")){
+                    else if(taskData.get(4).equals("False")){
                         newTask.setAntiTask(false);
                     }
                     else{
@@ -58,7 +58,7 @@ public class FileReader {
                     Runtime runtime = new Runtime();
                     runtime.startTime = Double.parseDouble(taskData.get(2));
                     runtime.duration = Double.parseDouble(taskData.get(3));
-                    Task newTask = new RecurringTask(taskData.get(0), Integer.parseInt(taskData.get(1)), runtime, Integer.parseInt(taskData.get(7)), Integer.parseInt(taskData.get(8)));
+                    Task newTask = new RecurringTask(taskData.get(0), Integer.parseInt(taskData.get(5)), runtime, Integer.parseInt(taskData.get(7)), Integer.parseInt(taskData.get(8)));
                     schedule.checkConflicts(newTask);
                     newTasks.add(newTask);
 
@@ -66,8 +66,6 @@ public class FileReader {
                 else{
                     throw new Exception("Invalid format");
                 }
-                in.next();
-                in.next();
             }
         }
         catch (Exception e){
